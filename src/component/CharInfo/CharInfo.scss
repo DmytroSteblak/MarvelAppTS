@@ -1,0 +1,48 @@
+.char {
+  &_info {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+    span {
+      font-weight: bold;
+      margin: 16px;
+      font-size: 20px;
+    }
+    ul {
+      margin: 16px;
+    }
+  }
+
+  &_basics {
+    display: flex;
+    padding: 20px;
+
+    img {
+      width: 120px;
+      margin-right: 32px;
+    }
+  }
+
+  &_name {
+    font-size: 22px;
+  }
+
+  &_buttons {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      margin-top: 8px;
+    }
+  }
+
+  &_description {
+    margin: 16px;
+    font-size: 14px;
+  }
+
+  &_comic {
+    padding: 8px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+    margin-top: 8px;
+  }
+}

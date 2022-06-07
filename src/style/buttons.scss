@@ -1,0 +1,29 @@
+@import '../style/variables.scss';
+
+.button {
+  min-width: 101px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: 0.3s transform;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  .inner {
+    position: relative;
+    line-height: 30px;
+    padding: 0 18px;
+    transition: none;
+  }
+  &_main {
+    background-color: $main-color;
+  }
+  &_secondary {
+    background-color: $grey;
+  }
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+}

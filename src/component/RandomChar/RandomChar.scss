@@ -1,0 +1,70 @@
+@import '../../style/variables.scss';
+
+.randomchar {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+
+  &_block {
+    display: flex;
+    width: 50%;
+    padding: 40px 35px;
+
+    img {
+      width: 180px;
+    }
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 24px;
+    width: 100%;
+  }
+
+  &_name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &_deskr {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  &_links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_static {
+    width: 50%;
+    background-color: $dark;
+    padding: 34px;
+    position: relative;
+  }
+
+  &_title {
+    width: 70%;
+    font-size: 22px;
+    margin: 8px 0;
+    font-weight: bold;
+    line-height: 32px;
+    letter-spacing: -0.045em;
+    color: #FFFFFF;
+
+    &:nth-child(2) {
+      margin-top: 33px;
+    }
+  }
+
+  &_decoration {
+    position: absolute;
+    bottom: 24px;
+    right: -37px;
+  }
+}
+
+
