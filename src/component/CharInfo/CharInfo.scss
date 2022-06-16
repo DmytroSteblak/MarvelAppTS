@@ -1,19 +1,19 @@
 .char {
   &_info {
+    padding: 20px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     span {
       font-weight: bold;
-      margin: 16px;
+      margin: 16px 0;
       font-size: 20px;
     }
     ul {
-      margin: 16px;
+      margin: 16px 0;
     }
   }
 
   &_basics {
     display: flex;
-    padding: 20px;
 
     img {
       width: 120px;
@@ -36,12 +36,12 @@
   }
 
   &_description {
-    margin: 16px;
+    margin: 16px 0;
     font-size: 14px;
   }
 
   &_comic {
-    padding: 8px;
+    padding: 8px 0;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     margin-top: 8px;
   }

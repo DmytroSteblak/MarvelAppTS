@@ -1,15 +1,24 @@
-import React from 'react';
-import thor from '../../resources/img/thor.jpeg'
+import React, {useState} from 'react';
 import './CharItem.scss'
+import cn from 'classnames';
+import {ItransformCharacterProps} from "../../@types/characterTypes";
 
-const CharItem:React.FC = () => {
+const CharItem: React.FC<ItransformCharacterProps> = ({character, setActive, active}) => {
+
+    const toggleActiveItem = () => {
+        setActive?.(character.id)
+    }
+
     return (
-        <div className="char_item">
-            <img src={thor} alt=""/>
-            <div className="char_item_name">
-                NameChar
+        <>
+            <div onClick={toggleActiveItem} className={cn("char_item", {"active" : active === character.id})}>
+                <img src={character.thumbnail} alt=""/>
+                <div className="char_item_name">
+                    {character.name}
+                </div>
             </div>
-        </div>
+        </>
+
     );
 };
 
