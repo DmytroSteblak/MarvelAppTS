@@ -25,7 +25,7 @@ export interface ItransformCharacter {
 export interface ItransformCharacterProps {
     character: ItransformCharacter;
     setActive?: (id: number) => void;
-    active?: number;
+    active?: number | null;
 }
 
 export interface ImarvelServices {
@@ -34,4 +34,13 @@ export interface ImarvelServices {
     getAllCharacter: (offset: number) => Promise<ItransformCharacter[]>;
     getCharacterForId: (id: number) => Promise<ItransformCharacter>;
     resetError: any;
+}
+
+export interface ICharListProps {
+    setSelectId: (active: number) => void;
+    active: number | null;
+}
+
+export interface ICharInfoProps {
+    active: number | null;
 }

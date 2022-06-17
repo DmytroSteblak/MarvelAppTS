@@ -1,27 +1,39 @@
 import React, {useEffect, useState} from 'react';
-import './CharInfo.scss'
+
+import './CharInfo.scss';
 import Skeleton from '../skeleton/Skeleton';
-import marvelServices from "../../services/marvelServices";
-import {ItransformCharacter, ItransformCharacterProps} from "../../@types/characterTypes";
+import Loading from '../spinner/Spinner';
+import marvelServices from '../../services/marvelServices';
+import {
+    ICharInfoProps,
+    ItransformCharacter,
+    ItransformCharacterProps
+} from '../../@types/characterTypes';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
-interface CharInfoProps {
-    active: number | null;
-}
-
-const CharInfo: React.FC<CharInfoProps> = ({active}) => {
-    const [char, setChar] = useState<ItransformCharacter | null>(null)
+const CharInfo: React.FC<ICharInfoProps> = ({active}) => {
+    const [char, setChar] = useState<ItransformCharacter | null>(null);
     const {loading, error, getCharacterForId} = marvelServices();
 
     useEffect(() => {
         if (active) {
-            getCharacterForId(active).then(char => setChar(char))
+            getCharacterForId(active).then(char => setChar(char));
         }
-    }, [active])
-    
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [active]);
+
+    const skeleton = !char && !loading && !error ? <Skeleton /> : null;
+    const load = loading ? <Loading /> : null;
+    const Errored = error ? <ErrorMessage /> : null;
+    const content = (!error && !loading && char) ? <View character={char}/> : null;
+
 
     return (
         <div className="char_info">
-            {!char ? <Skeleton/> : <View character={char}/>}
+            {skeleton}
+            {load}
+            {Errored}
+            {content}
         </div>
     );
 };
@@ -55,11 +67,11 @@ const View: React.FC<ItransformCharacterProps> = ({character}) => (
                         <li key={id} className="char_comic">
                             {item.name}
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </div>}
     </>
-)
+);
 
 export default CharInfo;

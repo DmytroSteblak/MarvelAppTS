@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+
 import mjolnir from '../../resources/img/mjolnir.png';
 import Loading from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -7,7 +8,8 @@ import {
     ItransformCharacterProps
 } from '../../@types/characterTypes';
 import './RandomChar.scss';
-import marvelServices from "../../services/marvelServices";
+import marvelServices from '../../services/marvelServices';
+
 
 
 const RandomChar = () => {
@@ -16,27 +18,27 @@ const RandomChar = () => {
     const {loading, error, getCharacterForId, resetError} = marvelServices();
 
     const onLoaded = (items: ItransformCharacter) => {
-        setCharacter(items)
-    }
+        setCharacter(items);
+    };
 
     const updateChar = () => {
-        resetError()
+        resetError();
         const id = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
-        getCharacterForId(id).then(onLoaded)
-    }
+        getCharacterForId(id).then(onLoaded);
+    };
 
     useEffect(() => {
-        updateChar()
+        updateChar();
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     const load = loading ? <Loading /> : null;
     const err = error ? <ErrorMessage /> : null;
     const content = !(loading || error || !character) ? <View character={character} /> : null;
 
     return (
-        <div className='randomchar'>
+        <div className="randomchar">
             {err}
             {load}
             {content}
@@ -51,7 +53,7 @@ const RandomChar = () => {
                 <button onClick={updateChar} className="button button_main">
                     <div className="inner">TRY IT</div>
                 </button>
-                <img src={mjolnir} className='randomchar_decoration' alt="img"/>
+                <img src={mjolnir} className="randomchar_decoration" alt="img"/>
             </div>
         </div>
     );
@@ -60,7 +62,7 @@ const RandomChar = () => {
 const View:React.FC<ItransformCharacterProps> = ({character }) => {
     return (
         <div className="randomchar_block">
-            <img alt='img' src={character.thumbnail} className="randomchar_img"/>
+            <img alt="img" src={character.thumbnail} className="randomchar_img"/>
             <div className="randomchar_info">
                 <div className="randomchar_name">
                     {character?.name}
@@ -69,17 +71,17 @@ const View:React.FC<ItransformCharacterProps> = ({character }) => {
                     {character?.description}
                 </div>
                 <div className="randomchar_links">
-                    <a target='blank' href={character.homepage} className="button button_main">
+                    <a target="blank" href={character.homepage} className="button button_main">
                         <div className="inner">HOMEPAGE</div>
                     </a>
-                    <a target='blank' href={character.wiki} className="button button_secondary">
+                    <a target="blank" href={character.wiki} className="button button_secondary">
                         <div className="inner">WIKI</div>
                     </a>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 
 

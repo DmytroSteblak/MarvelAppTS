@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import RandomChar from "../RandomChar/RandomChar";
-import CharList from "../CharList/CharList";
-import CharInfo from "../CharInfo/CharInfo";
+
+import RandomChar from '../RandomChar/RandomChar';
+import CharList from '../CharList/CharList';
+import CharInfo from '../CharInfo/CharInfo';
 
 const Main: React.FC = () => {
 
