@@ -33,6 +33,8 @@ export interface ImarvelServices {
     error: null | string;
     getAllCharacter: (offset: number) => Promise<ItransformCharacter[]>;
     getCharacterForId: (id: number) => Promise<ItransformCharacter>;
+    getAllComics: (offset: number) => Promise<any>;
+    getComicForId: (id: string) => Promise<any>;
     resetError: any;
 }
 
@@ -43,4 +45,18 @@ export interface ICharListProps {
 
 export interface ICharInfoProps {
     active: number | null;
+}
+
+export interface IComicsType {
+    id: number;
+    title: string;
+    description: string;
+    pageCount: string;
+    thumbnail: string;
+    language: string;
+    price: string;
+}
+
+export interface IComicsTypeProps {
+    comic: IComicsType;
 }

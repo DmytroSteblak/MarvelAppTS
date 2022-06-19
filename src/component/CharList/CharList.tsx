@@ -19,7 +19,6 @@ const CharList: React.FC<ICharListProps> = ({active, setSelectId}) => {
 
     const getItemsList = (offset: number, init?: boolean) => {
         init ? setNewItem(false) : setNewItem(true);
-
         setOffset(offset + 9);
         getAllCharacter(offset).then(onLoaded);
     };
@@ -38,9 +37,14 @@ const CharList: React.FC<ICharListProps> = ({active, setSelectId}) => {
     }, []);
 
     function renderItems() {
-        return characters.map(item => (
+        const items = characters.map(item => (
             <CharItem setActive={setSelectId} key={item.id} active={active} character={item}/>
         ));
+        return (
+            <div className="char-grid">
+                {items}
+            </div>
+        );
     }
 
     const load = loading && !loadNewItem ? <Loading/> : null;
@@ -51,9 +55,7 @@ const CharList: React.FC<ICharListProps> = ({active, setSelectId}) => {
         <div>
             {load}
             {err}
-            <div className="char_list">
-                {content}
-            </div>
+            {content}
             <button
                 disabled={loadNewItem}
                 style={lastItem ? {display: 'none'} : {display: 'block'}}

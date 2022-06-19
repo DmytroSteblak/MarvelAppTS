@@ -1,19 +1,28 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
 
+import Spinner from '../spinner/Spinner';
 import Header from '../Header/Header';
-import Main from '../pages/main';
+
+const Main = React.lazy(() => import('../pages/main'));
+const SingleComicsPage = React.lazy(() => import('../pages/SingleComicsPage/singleComicsPage'));
+const ComicsPage = React.lazy(() => import('../pages/comicsPage'));
+const Page404 = React.lazy(() => import('../pages/404'));
 
 function App(): JSX.Element {
     return (
         <div className="app">
             <Header />
-            <div className="main">
-                <Routes>
-                    <Route path="/" element={<Main />} />
-                    <Route path="comics" element={<div>comics</div>} />
-                </Routes>
-            </div>
+            <main className="main">
+                <Suspense fallback={<Spinner />} >
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="comics" element={<ComicsPage />} />
+                        <Route path="/comics/:comicId" element={<SingleComicsPage />} />
+                        <Route path="*" element={<Page404 />} />
+                    </Routes>
+                </Suspense>
+            </main>
         </div>
     );
 }

@@ -1,0 +1,15 @@
+@import '../../style/variables.scss';
+
+.app-banner {
+    background-color: $dark;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 45px;
+    &-content {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        color: #FFFFFF;
+        padding-top: 18px;
+    }
+}
